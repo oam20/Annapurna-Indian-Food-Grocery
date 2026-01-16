@@ -55,7 +55,7 @@ const Navbar = () => {
                         {/* Action Buttons */}
                         <div className="hidden lg:flex items-center space-x-4">
                             <Link
-                                to="/reservations"
+                                to="/about#reservations"
                                 className="text-brand-primary border-2 border-brand-primary px-4 py-2 rounded-full font-medium hover:bg-brand-primary hover:text-white transition-colors"
                             >
                                 Reservations
@@ -110,7 +110,7 @@ const Navbar = () => {
                                 ))}
                                 <div className="mt-4 space-y-3">
                                     <Link
-                                        to="/reservations"
+                                        to="/about#reservations"
                                         className="block w-full text-center text-brand-primary border-2 border-brand-primary px-4 py-2 rounded-full font-medium"
                                         onClick={() => setIsOpen(false)}
                                     >
@@ -118,10 +118,10 @@ const Navbar = () => {
                                     </Link>
                                     <button
                                         onClick={() => {
-                                            setIsOpen(false);
                                             setIsOrderModalOpen(true);
+                                            setIsOpen(false);
                                         }}
-                                        className="block w-full text-center bg-brand-primary text-white px-6 py-2 rounded-full font-medium"
+                                        className="block w-full bg-brand-primary text-white px-6 py-2 rounded-full font-medium shadow-lg"
                                     >
                                         Order Online
                                     </button>

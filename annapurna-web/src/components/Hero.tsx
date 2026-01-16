@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import OnlineOrderModal from './OnlineOrderModal';
 
 const Hero = () => {
+    const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
+
     // Original image from the HTML source
     const heroImage = "https://static.wixstatic.com/media/6cbac1_d6b62cc3e541430eb0c8f2b7b7f9128f~mv2.jpeg";
 
@@ -42,14 +46,19 @@ const Hero = () => {
                     >
                         View Menu
                     </Link>
-                    <Link
-                        to="/order-online"
+                    <button
+                        onClick={() => setIsOrderModalOpen(true)}
                         className="bg-brand-cream hover:bg-white text-brand-brown px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:scale-105 border-2 border-brand-primary"
                     >
                         Order Online
-                    </Link>
+                    </button>
                 </motion.div>
             </div>
+
+            <OnlineOrderModal
+                isOpen={isOrderModalOpen}
+                onClose={() => setIsOrderModalOpen(false)}
+            />
         </div>
     );
 };

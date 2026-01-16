@@ -1,6 +1,7 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, Users, ChevronRight, Utensils } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // Design Constants
 const COLORS = {
@@ -15,6 +16,20 @@ const COLORS = {
 };
 
 const About = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.hash === '#reservations') {
+            const element = document.getElementById('reservations');
+            if (element) {
+                // Small timeout to ensure element is rendered
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 500);
+            }
+        }
+    }, [location]);
+
     return (
         <div className="min-h-screen font-serif" style={{ backgroundColor: COLORS.background }}>
 
@@ -138,6 +153,7 @@ const About = () => {
 
                     {/* Reservation Card - Adapted Style */}
                     <motion.div
+                        id="reservations"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}

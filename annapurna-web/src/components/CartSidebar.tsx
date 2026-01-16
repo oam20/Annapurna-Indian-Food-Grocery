@@ -63,19 +63,19 @@ const CartSidebar = () => {
                         <div className="flex-1 overflow-y-auto p-6 space-y-6">
                             {items.length === 0 ? (
                                 <div className="h-full flex flex-col items-center justify-center text-center space-y-4">
-                                    <ShoppingBag className="w-16 h-16 text-gray-200" />
-                                    <p className="text-gray-500 text-lg">Your cart is empty</p>
+                                    <ShoppingBag className="w-16 h-16 text-brand-divier" />
+                                    <p className="text-brand-muted text-lg">Your cart is empty</p>
                                     <button
                                         onClick={toggleCart}
-                                        className="text-orange-600 font-medium hover:underline"
+                                        className="text-brand-primary font-medium hover:underline"
                                     >
                                         Browse Menu
                                     </button>
                                 </div>
                             ) : (
                                 items.map((item) => (
-                                    <div key={item.id} className="flex gap-4 p-4 border border-gray-100 rounded-xl hover:border-gray-200 transition-colors bg-white shadow-sm">
-                                        <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-gray-50">
+                                    <div key={item.id} className="flex gap-4 p-4 border border-brand-divider rounded-xl hover:border-brand-primary/30 transition-colors bg-white shadow-sm">
+                                        <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-brand-cream/30">
                                             <img
                                                 src={item.image}
                                                 alt={item.name}
@@ -84,27 +84,27 @@ const CartSidebar = () => {
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex justify-between items-start mb-1">
-                                                <h3 className="font-semibold text-gray-800 line-clamp-1 pr-2">{item.name}</h3>
-                                                <span className="font-semibold text-gray-900 whitespace-nowrap">
+                                                <h3 className="font-semibold text-brand-brown line-clamp-1 pr-2">{item.name}</h3>
+                                                <span className="font-semibold text-brand-secondary whitespace-nowrap">
                                                     {(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}
                                                 </span>
                                             </div>
-                                            <p className="text-sm text-gray-500 mb-3">{item.category}</p>
+                                            <p className="text-sm text-brand-muted mb-3">{item.category}</p>
 
                                             <div className="flex items-center justify-between mb-3">
-                                                <div className="flex items-center gap-2 bg-gray-50 rounded-lg p-1">
+                                                <div className="flex items-center gap-2 bg-brand-cream rounded-lg p-1">
                                                     <button
                                                         onClick={() => updateQuantity(item.id, -1)}
                                                         className="p-1 hover:bg-white rounded shadow-sm transition-all"
                                                     >
-                                                        <Minus className="w-3.5 h-3.5 text-gray-600" />
+                                                        <Minus className="w-3.5 h-3.5 text-brand-brown" />
                                                     </button>
-                                                    <span className="font-medium text-gray-900 w-6 text-center text-sm">{item.quantity}</span>
+                                                    <span className="font-medium text-brand-brown w-6 text-center text-sm">{item.quantity}</span>
                                                     <button
                                                         onClick={() => updateQuantity(item.id, 1)}
                                                         className="p-1 hover:bg-white rounded shadow-sm transition-all"
                                                     >
-                                                        <Plus className="w-3.5 h-3.5 text-gray-600" />
+                                                        <Plus className="w-3.5 h-3.5 text-brand-brown" />
                                                     </button>
                                                 </div>
                                                 <button
@@ -117,7 +117,7 @@ const CartSidebar = () => {
 
                                             {/* Special Request Input */}
                                             <div className="space-y-1.5">
-                                                <div className="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
+                                                <div className="flex items-center gap-1.5 text-xs text-brand-muted font-medium">
                                                     <MessageSquare className="w-3 h-3" />
                                                     Special Request
                                                 </div>
@@ -125,7 +125,7 @@ const CartSidebar = () => {
                                                     value={item.specialRequest || ''}
                                                     onChange={(e) => updateSpecialRequest(item.id, e.target.value)}
                                                     placeholder="e.g. Extra spicy, No onions..."
-                                                    className="w-full text-sm bg-gray-50 border border-gray-200 rounded-lg p-2 focus:outline-none focus:ring-1 focus:ring-orange-500 resize-none"
+                                                    className="w-full text-sm bg-brand-cream border border-brand-divider rounded-lg p-2 focus:outline-none focus:ring-1 focus:ring-brand-primary resize-none placeholder-brand-muted"
                                                     rows={2}
                                                 />
                                             </div>
@@ -137,13 +137,13 @@ const CartSidebar = () => {
 
                         {/* Footer */}
                         {items.length > 0 && (
-                            <div className="border-t border-gray-100 p-6 bg-gray-50 space-y-4">
+                            <div className="border-t border-brand-divider p-6 bg-brand-cream/30 space-y-4">
                                 <div className="space-y-2">
-                                    <div className="flex justify-between text-gray-600">
+                                    <div className="flex justify-between text-brand-muted">
                                         <span>Subtotal</span>
                                         <span>{'$'}{cartTotal.toFixed(2)}</span>
                                     </div>
-                                    <div className="flex justify-between text-lg font-bold text-gray-900">
+                                    <div className="flex justify-between text-lg font-bold text-brand-secondary">
                                         <span>Total</span>
                                         <span>{'$'}{cartTotal.toFixed(2)}</span>
                                     </div>
@@ -152,7 +152,7 @@ const CartSidebar = () => {
                                     <Link
                                         to="/cart"
                                         onClick={toggleCart}
-                                        className="w-full bg-white border border-gray-200 text-gray-900 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all text-center"
+                                        className="w-full bg-brand-secondary text-white border border-brand-secondary py-4 rounded-xl font-bold text-lg hover:bg-brand-primary transition-all text-center shadow-md"
                                     >
                                         View Full Bag
                                     </Link>

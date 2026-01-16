@@ -7,16 +7,17 @@ import type { GroceryItem } from '../data/grocery';
 import { useCart } from '../context/CartContext';
 
 // Design Constants
+// Design Constants - Mapped to Global Rustic Theme
 const COLORS = {
-    primaryAccent: '#F28B2E',
-    primaryCTA: '#F0C56A',
-    background: '#FFFFFF',
-    imageBg: '#F1F1F1',
-    border: '#E6E6E6',
-    primaryText: '#111111',
-    secondaryText: '#6B6B6B',
-    mutedText: '#9A9A9A',
-    star: '#F59E0B'
+    primaryAccent: '#B65A2A', // Brand Primary
+    primaryCTA: '#B6DE6F',    // Brand Lime (for action)
+    background: '#FFF6E8',    // Brand Cream
+    imageBg: '#FFFFFF',       // White for product clarity
+    border: '#E8D8C8',        // Brand Divider
+    primaryText: '#8A3F1D',   // Brand Secondary (Rust)
+    secondaryText: '#6A4A3A', // Brand Brown
+    mutedText: '#8C7768',     // Brand Muted
+    star: '#B65A2A'           // Brand Primary
 };
 
 const GroceryProductPage = () => {

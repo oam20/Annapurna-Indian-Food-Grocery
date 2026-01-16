@@ -20,7 +20,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="bg-white shadow-md sticky top-0 z-50">
+            <nav className="bg-brand-cream shadow-sm sticky top-0 z-50 border-b border-brand-divider">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-24 items-center">
                         {/* Logo Section */}
@@ -30,11 +30,11 @@ const Navbar = () => {
                                 <img
                                     src="https://static.wixstatic.com/media/6cbac1_dab37de4ecdb476487d381932347c176~mv2.gif"
                                     alt="Annapurna Logo"
-                                    className="h-16 w-auto object-contain"
+                                    className="h-16 w-auto object-contain mix-blend-multiply"
                                 />
                                 <div className="hidden md:block">
-                                    <h1 className="text-2xl font-bold text-orange-600 leading-none">Annapurna</h1>
-                                    <span className="text-sm text-gray-600 font-medium tracking-wider">Indian Food & Grocery</span>
+                                    <h1 className="text-2xl font-bold font-serif text-brand-secondary leading-none">Annapurna</h1>
+                                    <span className="text-sm text-brand-muted font-medium tracking-wider">Indian Food & Grocery</span>
                                 </div>
                             </Link>
                         </div>
@@ -45,7 +45,7 @@ const Navbar = () => {
                                 <Link
                                     key={link.name}
                                     to={link.path}
-                                    className="text-gray-700 hover:text-orange-600 font-medium text-lg transition-colors"
+                                    className="text-brand-brown hover:text-brand-primary font-medium text-lg transition-colors font-serif"
                                 >
                                     {link.name}
                                 </Link>
@@ -56,23 +56,23 @@ const Navbar = () => {
                         <div className="hidden lg:flex items-center space-x-4">
                             <Link
                                 to="/reservations"
-                                className="text-orange-600 border-2 border-orange-600 px-4 py-2 rounded-full font-medium hover:bg-orange-600 hover:text-white transition-colors"
+                                className="text-brand-primary border-2 border-brand-primary px-4 py-2 rounded-full font-medium hover:bg-brand-primary hover:text-white transition-colors"
                             >
                                 Reservations
                             </Link>
                             <button
                                 onClick={() => setIsOrderModalOpen(true)}
-                                className="bg-orange-600 text-white px-6 py-2 rounded-full font-medium hover:bg-orange-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                                className="bg-brand-primary text-white px-6 py-2 rounded-full font-medium hover:bg-brand-secondary transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                             >
                                 Order Online
                             </button>
                             <button
                                 onClick={toggleCart}
-                                className="text-gray-700 hover:text-orange-600 p-2 relative"
+                                className="text-brand-brown hover:text-brand-primary p-2 relative"
                             >
                                 <ShoppingCart className="h-6 w-6" />
                                 {cartCount > 0 && (
-                                    <span className="absolute -top-1 -right-1 bg-orange-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full animate-in fade-in zoom-in">
+                                    <span className="absolute -top-1 -right-1 bg-brand-primary text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full animate-in fade-in zoom-in">
                                         {cartCount}
                                     </span>
                                 )}
@@ -81,7 +81,7 @@ const Navbar = () => {
 
                         {/* Mobile Menu Button */}
                         <div className="lg:hidden flex items-center">
-                            <button className="p-2" onClick={() => setIsOpen(!isOpen)}>
+                            <button className="p-2 text-brand-brown" onClick={() => setIsOpen(!isOpen)}>
                                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                             </button>
                         </div>
@@ -95,14 +95,14 @@ const Navbar = () => {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
-                            className="lg:hidden bg-white border-t"
+                            className="lg:hidden bg-brand-cream border-t border-brand-divider"
                         >
                             <div className="px-4 pt-2 pb-6 space-y-2">
                                 {navLinks.map((link) => (
                                     <Link
                                         key={link.name}
                                         to={link.path}
-                                        className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-orange-600 hover:bg-gray-50 rounded-md"
+                                        className="block px-3 py-2 text-base font-medium text-brand-brown hover:text-brand-primary hover:bg-orange-50/50 rounded-md font-serif"
                                         onClick={() => setIsOpen(false)}
                                     >
                                         {link.name}
@@ -111,7 +111,7 @@ const Navbar = () => {
                                 <div className="mt-4 space-y-3">
                                     <Link
                                         to="/reservations"
-                                        className="block w-full text-center text-orange-600 border-2 border-orange-600 px-4 py-2 rounded-full font-medium"
+                                        className="block w-full text-center text-brand-primary border-2 border-brand-primary px-4 py-2 rounded-full font-medium"
                                         onClick={() => setIsOpen(false)}
                                     >
                                         Reservations
@@ -121,7 +121,7 @@ const Navbar = () => {
                                             setIsOpen(false);
                                             setIsOrderModalOpen(true);
                                         }}
-                                        className="block w-full text-center bg-orange-600 text-white px-6 py-2 rounded-full font-medium"
+                                        className="block w-full text-center bg-brand-primary text-white px-6 py-2 rounded-full font-medium"
                                     >
                                         Order Online
                                     </button>
@@ -131,7 +131,6 @@ const Navbar = () => {
                     )}
                 </AnimatePresence>
             </nav>
-
             <OnlineOrderModal
                 isOpen={isOrderModalOpen}
                 onClose={() => setIsOrderModalOpen(false)}

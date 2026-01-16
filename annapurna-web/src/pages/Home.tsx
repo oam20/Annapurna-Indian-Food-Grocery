@@ -7,19 +7,21 @@ const Home = () => {
             <Hero />
 
             {/* About Section (Extracted text) */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-orange-50/50">
-                <div className="max-w-4xl mx-auto text-center space-y-8">
+            <section className="py-24 px-4 sm:px-6 lg:px-8 bg-brand-cream relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-divider to-transparent" />
+                <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-serif">Who We Are</h2>
-                        <div className="prose prose-lg mx-auto text-gray-700 leading-relaxed">
+                        <span className="text-brand-primary text-sm font-bold uppercase tracking-[0.2em] mb-4 block">Our Story</span>
+                        <h2 className="text-4xl md:text-5xl font-bold text-brand-secondary mb-8 font-serif">Who We Are</h2>
+                        <div className="prose prose-lg mx-auto text-brand-brown leading-relaxed font-sans">
                             <p>
                                 As a family owned business, we are proud to serve
-                                <span className="font-semibold text-orange-600"> REAL Fresh, Authentic, Simple and Delicious</span> Vegetarian Indian food that tastes as good as it looks.
+                                <span className="font-semibold text-brand-primary"> REAL Fresh, Authentic, Simple and Delicious</span> Vegetarian Indian food that tastes as good as it looks.
                             </p>
                             <p className="mt-4">
                                 Our goal is to provide the best dining experience to our customers. Our extended menu offers a variety of dishes including traditional, tandoor, fast-food and kid-friendly items.

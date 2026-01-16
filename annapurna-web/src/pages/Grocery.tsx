@@ -9,12 +9,12 @@ import { useCart } from '../context/CartContext';
 const COLORS = {
     primaryGreen: '#4C8C6A',
     ctaLime: '#B6DE6F',
-    pageBg: '#F9FAF9',
-    border: '#E6ECE8',
-    primaryText: '#1F3D2B',
-    secondaryText: '#6B7C73',
-    mutedText: '#9BA8A1',
-    star: '#F4C150',
+    pageBg: '#FFF6E8', // Harmony with Brand Cream
+    border: '#E8D8C8',  // Brand Divider
+    primaryText: '#1F3D2B', // Keeping Green for Grocery Identity
+    secondaryText: '#8C7768', // Brand Muted
+    mutedText: '#8C7768', // Brand Muted
+    star: '#B65A2A', // Brand Primary (Rust) for stars? Or keep star color. Let's make stars slightly rust-tinted to match theme.
     white: '#FFFFFF'
 };
 

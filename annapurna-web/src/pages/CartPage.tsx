@@ -23,13 +23,13 @@ const CartPage = () => {
 
     return (
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24">
-            <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-16">Shopping Bag</h1>
+            <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-16 text-brand-secondary font-serif">Shopping Bag</h1>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
                 {/* Left Column: Product List */}
                 <div className="lg:col-span-8 space-y-12">
                     {/* Header Row (Hidden on mobile) */}
-                    <div className="hidden md:grid grid-cols-12 gap-8 pb-4 border-b border-gray-200 text-xs font-bold uppercase tracking-widest text-gray-500">
+                    <div className="hidden md:grid grid-cols-12 gap-8 pb-4 border-b border-brand-divider text-xs font-bold uppercase tracking-widest text-brand-muted">
                         <div className="col-span-6">Product</div>
                         <div className="col-span-3 text-center">Quantity</div>
                         <div className="col-span-3 text-right">Total</div>
@@ -48,7 +48,7 @@ const CartPage = () => {
                             >
                                 {/* Product Info */}
                                 <div className="md:col-span-6 flex gap-6">
-                                    <div className="relative w-32 aspect-[3/4] md:w-40 bg-gray-100 overflow-hidden flex-shrink-0">
+                                    <div className="relative w-32 aspect-[3/4] md:w-40 bg-white/50 overflow-hidden flex-shrink-0 border border-brand-divider/30">
                                         <img
                                             src={item.image}
                                             alt={item.name}
@@ -57,17 +57,17 @@ const CartPage = () => {
                                     </div>
                                     <div className="flex-1 py-1">
                                         <div className="flex justify-between md:block">
-                                            <h3 className="text-lg font-bold uppercase tracking-wide mb-2">{item.name}</h3>
+                                            <h3 className="text-lg font-bold uppercase tracking-wide mb-2 text-brand-secondary">{item.name}</h3>
                                             {/* Mobile Price */}
-                                            <span className="md:hidden font-medium">
+                                            <span className="md:hidden font-medium text-brand-brown">
                                                 {'$'}{(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}
                                             </span>
                                         </div>
-                                        <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">{item.category}</p>
+                                        <p className="text-sm text-brand-muted uppercase tracking-wider mb-4">{item.category}</p>
 
                                         {/* Special Request Input */}
                                         <div className="mt-4">
-                                            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">
+                                            <label className="text-[10px] font-bold uppercase tracking-widest text-brand-muted mb-2 block">
                                                 Special Instructions
                                             </label>
                                             <input
@@ -75,7 +75,7 @@ const CartPage = () => {
                                                 value={item.specialRequest || ''}
                                                 onChange={(e) => updateSpecialRequest(item.id, e.target.value)}
                                                 placeholder="Add note..."
-                                                className="w-full max-w-xs bg-transparent border-b border-gray-200 py-1 text-sm focus:border-black focus:outline-none transition-colors placeholder-gray-300"
+                                                className="w-full max-w-xs bg-transparent border-b border-brand-divider py-1 text-sm focus:border-brand-primary focus:outline-none transition-colors placeholder-brand-divider"
                                             />
                                         </div>
                                     </div>
@@ -83,17 +83,17 @@ const CartPage = () => {
 
                                 {/* Quantity Stepper */}
                                 <div className="md:col-span-3 flex md:justify-center py-1">
-                                    <div className="flex items-center border border-gray-200 h-10 w-32 md:w-full max-w-[120px]">
+                                    <div className="flex items-center border border-brand-divider h-10 w-32 md:w-full max-w-[120px]">
                                         <button
                                             onClick={() => updateQuantity(item.id, -1)}
-                                            className="w-10 h-full flex items-center justify-center hover:bg-gray-50 transition-colors"
+                                            className="w-10 h-full flex items-center justify-center hover:bg-brand-cream transition-colors text-brand-brown"
                                         >
                                             <Minus className="w-3 h-3" />
                                         </button>
-                                        <span className="flex-1 text-center font-medium text-sm">{item.quantity}</span>
+                                        <span className="flex-1 text-center font-medium text-sm text-brand-brown">{item.quantity}</span>
                                         <button
                                             onClick={() => updateQuantity(item.id, 1)}
-                                            className="w-10 h-full flex items-center justify-center hover:bg-gray-50 transition-colors"
+                                            className="w-10 h-full flex items-center justify-center hover:bg-brand-cream transition-colors text-brand-brown"
                                         >
                                             <Plus className="w-3 h-3" />
                                         </button>
@@ -102,13 +102,13 @@ const CartPage = () => {
 
                                 {/* Price & Remove */}
                                 <div className="md:col-span-3 flex flex-row md:flex-col justify-between md:items-end py-1 h-full">
-                                    <span className="hidden md:block text-lg font-bold">
+                                    <span className="hidden md:block text-lg font-bold text-brand-brown">
                                         {'$'}{(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}
                                     </span>
 
                                     <button
                                         onClick={() => removeFromCart(item.id)}
-                                        className="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-red-600 transition-colors flex items-center gap-2 group/remove"
+                                        className="text-xs font-bold uppercase tracking-widest text-brand-muted hover:text-red-600 transition-colors flex items-center gap-2 group/remove"
                                     >
                                         <span className="hidden md:inline">Remove</span>
                                         <X className="w-4 h-4" />
@@ -121,51 +121,51 @@ const CartPage = () => {
 
                 {/* Right Column: Summary */}
                 <div className="lg:col-span-4">
-                    <div className="sticky top-28 bg-gray-50 p-8 md:p-12">
-                        <h2 className="text-xl font-bold uppercase tracking-widest mb-8">Order Summary</h2>
+                    <div className="sticky top-28 bg-white p-8 md:p-12 border border-brand-divider">
+                        <h2 className="text-xl font-bold uppercase tracking-widest mb-8 text-brand-secondary font-serif">Order Summary</h2>
 
                         {/* Delivery Note Section */}
                         <div className="mb-8">
-                            <label className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 block">
+                            <label className="text-xs font-bold uppercase tracking-widest text-brand-muted mb-3 block">
                                 Delivery Instructions
                             </label>
                             <textarea
                                 value={deliveryNote}
                                 onChange={(e) => updateDeliveryNote(e.target.value)}
                                 placeholder="e.g. Leave outside front door, Gate code 1234..."
-                                className="w-full bg-white border border-gray-200 p-4 text-sm focus:outline-none focus:border-black transition-colors resize-none mb-2"
+                                className="w-full bg-brand-cream border border-brand-divider p-4 text-sm focus:outline-none focus:border-brand-primary transition-colors resize-none mb-2"
                                 rows={3}
                             />
-                            <p className="text-[10px] text-gray-400 uppercase tracking-wider">
+                            <p className="text-[10px] text-brand-muted uppercase tracking-wider">
                                 Optional Note for Driver
                             </p>
                         </div>
 
                         <div className="space-y-4 mb-8 text-sm">
-                            <div className="flex justify-between text-gray-600">
+                            <div className="flex justify-between text-brand-brown">
                                 <span>Subtotal</span>
                                 <span>{'$'}{cartTotal.toFixed(2)}</span>
                             </div>
-                            <div className="flex justify-between text-gray-600">
+                            <div className="flex justify-between text-brand-muted">
                                 <span>Shipping</span>
                                 <span>Calculated at next step</span>
                             </div>
-                            <div className="flex justify-between text-gray-600">
+                            <div className="flex justify-between text-brand-muted">
                                 <span>Tax</span>
                                 <span>Calculated at next step</span>
                             </div>
 
-                            <div className="pt-6 mt-6 border-t border-gray-200 flex justify-between text-lg font-bold">
+                            <div className="pt-6 mt-6 border-t border-brand-divider flex justify-between text-lg font-bold text-brand-secondary">
                                 <span>Total</span>
                                 <span>{'$'}{cartTotal.toFixed(2)}</span>
                             </div>
                         </div>
 
-                        <button className="w-full bg-black text-white py-5 uppercase tracking-widest font-bold text-sm hover:bg-gray-900 transition-colors mb-4">
+                        <button className="w-full bg-brand-secondary text-white py-5 uppercase tracking-widest font-bold text-sm hover:bg-brand-primary transition-colors mb-4 shadow-md">
                             Proceed to Checkout
                         </button>
 
-                        <p className="text-xs text-gray-500 text-center leading-relaxed">
+                        <p className="text-xs text-brand-muted text-center leading-relaxed">
                             Secure Checkout. By proceeding, you agree to our Terms and Conditions.
                         </p>
                     </div>

@@ -18,21 +18,21 @@ const Menu = () => {
         : [];
 
     return (
-        <div className="min-h-screen bg-brand-cream font-sans text-brand-text">
+        <div className="min-h-screen bg-brand-cream font-serif text-brand-brown">
 
             {/* Editorial Header */}
             <div className="pt-16 pb-8 px-6 md:px-16 max-w-7xl mx-auto text-center md:text-left">
-                <h1 className="text-5xl md:text-[56px] font-medium leading-tight mb-4 tracking-tight">
+                <h1 className="text-5xl md:text-[56px] font-bold leading-tight mb-4 tracking-tight text-brand-secondary">
                     Our Menu
                 </h1>
-                <p className="text-brand-muted text-lg md:text-xl max-w-2xl font-light">
+                <p className="text-brand-muted text-lg md:text-xl max-w-2xl font-light italic">
                     Fresh, authentic, and simple vegetarian dishes made with love.
                 </p>
             </div>
 
             {/* Main Menu Tabs (Level 1) */}
             <div className="px-6 md:px-16 pb-8">
-                <div className="flex space-x-8 border-b border-brand-border/40 w-full justify-center md:justify-start">
+                <div className="flex space-x-8 border-b border-brand-divider w-full justify-center md:justify-start">
                     {mainMenus.map((menu) => (
                         <button
                             key={menu}
@@ -41,17 +41,17 @@ const Menu = () => {
                                 setActiveSubMenu(null); // Reset sub-menu on main menu change
                             }}
                             className={`
-                        pb-4 text-lg font-medium transition-all duration-300 relative
+                        pb-4 text-lg font-medium transition-all duration-300 relative font-sans
                         ${activeMainMenu === menu
-                                    ? 'text-brand-text'
-                                    : 'text-brand-muted hover:text-brand-text'}
+                                    ? 'text-brand-primary'
+                                    : 'text-brand-muted hover:text-brand-primary'}
                     `}
                         >
                             {menu}
                             {activeMainMenu === menu && (
                                 <motion.div
                                     layoutId="activeTab"
-                                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-text"
+                                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-primary"
                                 />
                             )}
                         </button>
@@ -64,11 +64,11 @@ const Menu = () => {
                 <div className="px-6 md:px-16 pb-6 max-w-[1400px] mx-auto">
                     <button
                         onClick={() => setActiveSubMenu(null)}
-                        className="flex items-center text-brand-muted hover:text-brand-text transition-colors"
+                        className="flex items-center text-brand-muted hover:text-brand-primary transition-colors font-sans"
                     >
                         ← Back to Categories
                     </button>
-                    <h2 className="text-3xl font-medium mt-4">{activeSubMenu}</h2>
+                    <h2 className="text-3xl font-bold mt-4 text-brand-secondary">{activeSubMenu}</h2>
                 </div>
             )}
 
@@ -90,17 +90,18 @@ const Menu = () => {
                                 <motion.div
                                     key={subMenu}
                                     onClick={() => setActiveSubMenu(subMenu)}
-                                    className="group cursor-pointer rounded-[20px] overflow-hidden relative aspect-[4/3] shadow-sm hover:shadow-md transition-all duration-300"
+                                    className="group cursor-pointer rounded-[20px] overflow-hidden relative aspect-[4/3] shadow-md hover:shadow-xl transition-all duration-300"
                                 >
+                                    <div className="absolute inset-0 bg-brand-secondary/20 group-hover:bg-brand-secondary/10 transition-colors z-10" />
                                     <img
                                         src={categoryImages[subMenu]}
                                         alt={subMenu}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-[0.85] group-hover:brightness-[0.75]"
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-[0.9] sepia-[0.2]"
                                     />
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <h3 className="text-white text-2xl font-medium tracking-wide text-center px-4 drop-shadow-md">
+                                    <div className="absolute inset-0 flex items-center justify-center z-20">
+                                        <div className="bg-brand-cream/90 backdrop-blur-sm px-6 py-3 rounded-full border border-brand-divider text-brand-secondary font-bold text-lg shadow-sm">
                                             {subMenu}
-                                        </h3>
+                                        </div>
                                     </div>
                                 </motion.div>
                             ))}
@@ -125,10 +126,10 @@ const Menu = () => {
                             {filteredItems.map((item) => (
                                 <div
                                     key={item.id}
-                                    className="bg-white rounded-[20px] border border-brand-border p-6 flex flex-col items-center text-center h-full hover:border-brand-text/30 transition-colors duration-300 relative group"
+                                    className="bg-white rounded-[20px] border border-brand-divider p-6 flex flex-col items-center text-center h-full hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300 relative group"
                                 >
                                     {/* Circular Image */}
-                                    <div className="w-40 h-40 rounded-full overflow-hidden mb-6 shadow-sm group-hover:scale-105 transition-transform duration-500">
+                                    <div className="w-40 h-40 rounded-full overflow-hidden mb-6 shadow-md border-4 border-brand-cream group-hover:scale-105 transition-transform duration-500">
                                         <img
                                             src={item.image}
                                             alt={item.name}
@@ -139,25 +140,25 @@ const Menu = () => {
                                     {/* Badges */}
                                     <div className="absolute top-4 right-4 flex flex-col gap-2 items-end">
                                         {item.isVegan && (
-                                            <span className="bg-brand-green/10 text-brand-green text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded-full">Vegan</span>
+                                            <span className="bg-brand-green/10 text-brand-green text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded-full border border-brand-green/20">Vegan</span>
                                         )}
                                         {item.isSpicy && (
-                                            <span className="bg-red-50 text-red-600 text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded-full">Spicy</span>
+                                            <span className="bg-red-50 text-red-600 text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded-full border border-red-100">Spicy</span>
                                         )}
                                     </div>
 
-                                    <h3 className="text-xl font-medium mb-2">{item.name}</h3>
-                                    <p className="text-brand-muted text-sm leading-relaxed mb-6 line-clamp-3">
+                                    <h3 className="text-xl font-bold mb-2 font-serif text-brand-secondary">{item.name}</h3>
+                                    <p className="text-brand-muted text-sm leading-relaxed mb-6 line-clamp-3 font-sans">
                                         {item.description}
                                     </p>
 
-                                    <div className="mt-auto w-full flex items-center justify-between pt-4 border-t border-brand-border/30">
-                                        <span className="text-lg font-medium">{item.price}</span>
+                                    <div className="mt-auto w-full flex items-center justify-between pt-4 border-t border-brand-divider/50">
+                                        <span className="text-lg font-bold text-brand-primary">{item.price}</span>
                                         <button
                                             onClick={() => addToCart(item)}
-                                            className="px-5 py-2 rounded-full border border-brand-border text-sm font-medium hover:bg-brand-text hover:text-white transition-all duration-300"
+                                            className="px-5 py-2 rounded-full bg-brand-primary text-white text-sm font-bold hover:bg-brand-secondary transition-all duration-300 shadow-md hover:shadow-lg"
                                         >
-                                            Order Now
+                                            Add to Order
                                         </button>
                                     </div>
                                 </div>

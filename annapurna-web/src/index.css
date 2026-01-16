@@ -1,7 +1,26 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: "Playfair Display", "Georgia", serif;
+  --font-sans: "Inter", "system-ui", sans-serif;
+
+  --color-brand-primary: #B65A2A;
+  --color-brand-secondary: #8A3F1D;
+  --color-brand-cream: #FFF6E8;
+  --color-brand-brown: #6A4A3A;
+  --color-brand-muted: #8C7768;
+  --color-brand-divider: #E8D8C8;
+  --color-brand-hero: rgba(122, 74, 42, 0.55);
+  --color-brand-green: #4C8C6A;
+  --color-brand-lime: #B6DE6F;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-cream text-brand-brown font-serif;
   }
 }

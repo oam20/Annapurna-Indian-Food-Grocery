@@ -25,7 +25,7 @@ const Hero = () => {
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-4 font-serif uppercase">
                         The Real Deal <br /> On Indian Food
                     </h1>
-                    <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto font-light">
+                    <p className="text-xl md:text-2xl text-brand-cream/90 max-w-3xl mx-auto font-light">
                         Serves authentic vegetarian Indian food
                     </p>
                 </motion.div>
@@ -38,13 +38,13 @@ const Hero = () => {
                 >
                     <Link
                         to="/menu"
-                        className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:scale-105"
+                        className="bg-brand-primary hover:bg-brand-secondary text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:scale-105 border-2 border-transparent"
                     >
                         View Menu
                     </Link>
                     <Link
                         to="/order-online"
-                        className="bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:scale-105"
+                        className="bg-brand-cream hover:bg-white text-brand-brown px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:scale-105 border-2 border-brand-primary"
                     >
                         Order Online
                     </Link>

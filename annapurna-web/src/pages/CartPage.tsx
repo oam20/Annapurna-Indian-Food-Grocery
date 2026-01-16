@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const CartPage = () => {
-    const { items, updateQuantity, removeFromCart, updateSpecialRequest, cartTotal } = useCart();
+    const { items, updateQuantity, removeFromCart, updateSpecialRequest, cartTotal, deliveryNote, updateDeliveryNote } = useCart();
 
     if (items.length === 0) {
         return (
@@ -123,6 +123,23 @@ const CartPage = () => {
                 <div className="lg:col-span-4">
                     <div className="sticky top-28 bg-gray-50 p-8 md:p-12">
                         <h2 className="text-xl font-bold uppercase tracking-widest mb-8">Order Summary</h2>
+
+                        {/* Delivery Note Section */}
+                        <div className="mb-8">
+                            <label className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 block">
+                                Delivery Instructions
+                            </label>
+                            <textarea
+                                value={deliveryNote}
+                                onChange={(e) => updateDeliveryNote(e.target.value)}
+                                placeholder="e.g. Leave outside front door, Gate code 1234..."
+                                className="w-full bg-white border border-gray-200 p-4 text-sm focus:outline-none focus:border-black transition-colors resize-none mb-2"
+                                rows={3}
+                            />
+                            <p className="text-[10px] text-gray-400 uppercase tracking-wider">
+                                Optional Note for Driver
+                            </p>
+                        </div>
 
                         <div className="space-y-4 mb-8 text-sm">
                             <div className="flex justify-between text-gray-600">

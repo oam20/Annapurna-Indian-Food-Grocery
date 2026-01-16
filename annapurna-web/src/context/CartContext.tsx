@@ -17,6 +17,8 @@ interface CartContextType {
     toggleCart: () => void;
     cartCount: number;
     cartTotal: number;
+    deliveryNote: string;
+    updateDeliveryNote: (note: string) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -24,6 +26,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider = ({ children }: { children: ReactNode }) => {
     const [items, setItems] = useState<CartItem[]>([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const [deliveryNote, setDeliveryNote] = useState('');
 
     const addToCart = (product: MenuItem) => {
         setItems(currentItems => {
@@ -64,6 +67,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         );
     };
 
+    const updateDeliveryNote = (note: string) => {
+        setDeliveryNote(note);
+    };
+
     const clearCart = () => setItems([]);
     const toggleCart = () => setIsCartOpen(prev => !prev);
 
@@ -86,7 +93,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             isCartOpen,
             toggleCart,
             cartCount,
-            cartTotal
+            cartTotal,
+            deliveryNote,
+            updateDeliveryNote
         }}>
             {children}
         </CartContext.Provider>

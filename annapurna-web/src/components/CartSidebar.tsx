@@ -149,9 +149,6 @@ const CartSidebar = () => {
                                     </div>
                                 </div>
                                 <div className="grid gap-3">
-                                    <button className="w-full bg-orange-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                                        Checkout Now
-                                    </button>
                                     <Link
                                         to="/cart"
                                         onClick={toggleCart}
